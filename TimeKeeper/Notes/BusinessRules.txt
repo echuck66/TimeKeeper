@@ -1,0 +1,75 @@
+﻿TimeKeeper Business Rules
+
+1) Objective: Track time records across multiple projects, sprints and tasks
+2) Model Definitions
+	a) Project - base object used for grouping sprints, tasks and timesheets
+	b) Sprint - unit of work grouping a series of tasks into a workload to be tracked over a 
+	   specified time period (usually 2 week increments)
+	c) SprintTask - individual task assigned and grouped under a Sprint
+	d) TimeEntry - individual unit of work performed against a single SprintTask
+	e) TimeSheet - grouping of TimeEntry records, grouped by project. 
+3) Create new Project
+	a) Project Name must be defined (does not need to be unique)
+	b) At time Project is created, status is set to Pending
+4) Open Project
+	a) 
+	b)
+5) Complete Project
+	a)
+	b)
+6) Delete Project
+	a)
+	b)
+7) Add new Sprint
+	a) Sprint Title and Objective must be populated
+	b) Sprint must be assigned to Project record as its parent record
+	c) Optional: StartDate and EndDate
+	d) At time Sprint is created, status is set to Pending
+	e) StartSprint as RelayCommand. When Sprint is started, StartDate is populated. 
+	f) If parent Project has status of Pending, set status to Open. 
+	g) Set Sprint status to Open.
+4) Open Sprint
+	a) 
+	b)
+5) Start Sprint
+	a)
+	b)
+6) Complete Sprint
+	a)
+	b)
+7) Delete Sprint
+	a)
+	b)
+8) Add new SprintTask 
+	a) 
+	b)
+9) Open SprintTask
+	a)
+	b)
+10) Complete SprintTask
+	a)
+	b)
+11) Delete SprintTask
+	a)
+	b)
+10) New TimeEntry
+	a)
+	b)
+11) Open TimeEntry
+	a)
+	b)
+12) Save TimeEntry
+	a)
+	b)
+13) Delete TimeEntry
+	a)
+	b)
+14) Open TimeSheet
+	a)
+	b)
+15) Complete TimeSheet
+	a)
+	b)
+16) Delete TimeSheet
+	a)
+	b)

@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TimeKeeper.MainPage"
+             xmlns:viewmodel="clr-namespace:TimeKeeper.ViewModels"
+             x:DataType="viewmodel:MainViewModel"
+             x:Name="Root">
+
+    <Grid RowDefinitions="100, Auto, Auto, Auto, Auto" ColumnDefinitions=".5*, .5*" ColumnSpacing="10" RowSpacing="10" Padding="10">
+        <Image Grid.ColumnSpan="2" Source="timekeeper_logo.png" HorizontalOptions="Start" />
+
+        <Button Command="{Binding GoToProjectsCommand}" 
+                Grid.Row="1" 
+                Grid.Column="0"  
+                Text="Projects"></Button>
+        <Label Text="Go to Projects" Grid.Row="1" Grid.Column="1"></Label>
+        
+        <Button Command="{Binding GoToTimeSheetsCommand}" 
+                Grid.Row="2" 
+                Grid.Column="0"  
+                Text="Timesheets"></Button>
+        <Label Text="Go to Timesheets" Grid.Row="2" Grid.Column="1"></Label>
+
+        <Button Command="{Binding GoToTimeEntryCommand}" 
+                Grid.Row="3" 
+                Grid.Column="0"  
+                Text="Time Entry"></Button>
+        <Label Text="Go to Time Entry" Grid.Row="3" Grid.Column="1"></Label>
+    
+
+    </Grid>
+
+    
+</ContentPage>

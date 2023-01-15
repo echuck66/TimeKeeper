@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TimeKeeper.Pages.MyProjectsPage"
+             Title="My Projects"
+             xmlns:viewmodel="clr-namespace:TimeKeeper.ViewModels"
+             xmlns:models="clr-namespace:TimeKeeper.Models"
+             x:DataType="viewmodel:MyProjectsViewModel"
+             x:Name="Root">
+    
+    <Grid RowDefinitions="100, Auto, *" 
+          ColumnDefinitions=".75*, .25*" 
+          ColumnSpacing="10" 
+          RowSpacing="10" 
+          Padding="10">
+        <Image Grid.ColumnSpan="2" 
+               Source="timekeeper_logo.png" 
+               HorizontalOptions="Start" />
+
+        <Entry Placeholder="Enter Project Name" 
+               Grid.Row="1" 
+               Text="{Binding NewProjectName}" />
+
+        <Button Text="Add" 
+                Grid.Row="1" 
+                Grid.Column="1" 
+                Command="{Binding AddProjectCommand}" />
+        
+        <CollectionView Grid.Row="2" 
+                        Grid.ColumnSpan="2" 
+                        ItemsSource="{Binding MyProjects}" >
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="models:Project">
+                    <SwipeView>
+                        <SwipeView.RightItems>
+                            <SwipeItems>
+                                <SwipeItem 
+                                    Text="Delete" 
+                                    BackgroundColor="Red"
+                                    Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:MyProjectsViewModel}}, Path=DeleteProjectCommand}"
+                                    CommandParameter="{Binding .}"></SwipeItem>
+                            </SwipeItems>
+                        </SwipeView.RightItems>
+                        <SwipeView.LeftItems>
+                            <SwipeItems>
+                                <SwipeItem Text="Open" BackgroundColor="Green"
+                                    Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:MyProjectsViewModel}}, Path=OpenProjectCommand}"
+                                    CommandParameter="{Binding .}"></SwipeItem>
+                            </SwipeItems>
+                        </SwipeView.LeftItems>
+                        <Frame>
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer 
+                                    Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:MyProjectsViewModel}}, Path=OpenProjectCommand}"
+                                    CommandParameter="{Binding .}">
+                                </TapGestureRecognizer>
+                            </Frame.GestureRecognizers>
+                            <Grid Padding="0,5">
+                                <Label Text="{Binding Name}" 
+                                   FontSize="24"></Label>
+                            </Grid>
+                        </Frame>
+                    </SwipeView>
+                    
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+    </Grid>
+</ContentPage>
